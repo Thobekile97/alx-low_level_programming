@@ -1,25 +1,23 @@
 #include <stdio.h>
-#include "main.h"
+#include <string.h>
 
 /**
- * main - (int argc, char *argv[]
- * @argc: Number of arguemnts
- * @argv: An array containing the program command line arguements
- *
- * Return: Always 0 (Success)
+ * @brief Extracts the program name from the full path.
+ * @param argc Number of arguments.
+ * @param argv Array of command-line arguments.
+ * @return 0 on successful execution.
  */
 int main(int argc, char *argv[]) {
-	//Extract program name from the full path
-	char *program_name = strrchr(argv[0], '/');
+    // Extract program name from the full path
+    char *program_name = strrchr(argv[0], '/');
 
-	if (program_name == NULL)
-	    program_name = argv[0]
+    if (program_name == NULL)
+        program_name = argv[0];
+    else
+        program_name++;
 
-        else program_name++;
+    // Print the program name
+    printf("%s\n", program_name);
 
-	//print the program name
-	printf("%s\n", program_name);
-
-	return 0
-
+    return 0;
 }
