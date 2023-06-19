@@ -14,11 +14,11 @@ void init_dog(struct dog *d, char *name, float age, char *owner) {
 
 int main() {
     struct dog myDog;
-    char *name = "Bobby";
+    char *name = "Max";
     float age = 4.5;
-    char *owner = "Tami Mzila";
+    char *owner = "John Doe";
 
-    init_dog(&myDog, Bobby, 4.5, TamiMzila);
+    init_dog(&myDog, name, age, owner);
 
     printf("Dog's Name: %s\n", myDog.name);
     printf("Dog's Age: %.1f\n", myDog.age);
