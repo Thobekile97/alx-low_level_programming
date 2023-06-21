@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+void print_elem(int elem) {
+    printf("%d\n", elem);
+}
+
+void print_elem_hex(int elem) {
+    printf("0x%x\n", elem);
+}
+
+int main(void) {
+    int array[5] = {0, 98, 402, 1024, 4096};
+    size_t size = sizeof(array) / sizeof(array[0]);
+
+    array_iterator(array, size, &print_elem);
+    array_iterator(array, size, &print_elem_hex);
+
+    return 0;
+}
+In this code, the array_iterator function is provided as a declaration from an external header file function_pointers.h. It takes an array, the size of the array, and a function pointer as parameters. It iterates over the array elements and calls the provided action function for each element.
+
+The print_elem function is an example of a function that prints each element of the array. The print_elem_hex function is an example of a function that prints each element in hexadecimal format.
+
+In the main function, we initialize an array and its size. We then call array_iterator twice, once with the print_elem function and once with the print_elem_hex func
