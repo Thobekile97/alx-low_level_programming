@@ -1,20 +1,25 @@
-#include "function_pointers.h"
 #include <stdio.h>
 
-/**
- * print_name - prints a name using a given function
- * @name: the name to be printed
- * @f: a pointer to a function that takes a character pointer as an argument
- *
- * Description: This function takes a name and a function pointer as arguments.
- *              It then calls the function pointer, passing in the name argument.
- *              This is a way to allow the caller to specify how the name should
- *              be printed.
- */
-void print_name(char *name, void (*f)(char *))
-{
-    if (name == NULL || f == NULL)
-        return;
-
+void print_name(char *name, void (*f)(char *)) {
     f(name);
+}
+
+void print_with_newline(char *name) {
+    printf("%s\n", name);
+}
+
+void print_with_exclamation(char *name) {
+    printf("%s!\n", name);
+}
+
+int main() {
+    char name[] = "John Doe";
+
+    printf("Printing name with newline:\n");
+    print_name(name, print_with_newline);
+
+    printf("\nPrinting name with exclamation:\n");
+    print_name(name, print_with_exclamation);
+
+    return 0;
 }
