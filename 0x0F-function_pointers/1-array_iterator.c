@@ -1,21 +1,37 @@
-#include "function_pointers.h"
 #include <stdio.h>
-/**
- * array_iterator - prints each array elem on a newl
- * @array: array
- * @size: how many elem to print
- * @action: pointer to print in regular or hex
- * Return: void
- */
-void array_iterator(int *array, size_t size, void (*action)(int))
-{
-	unsigned int i;
+#include <stdlib.h>
 
-	if (array == NULL || action == NULL)
-		return;
+void array_iterator(int *array, size_t size, void (*action)(int));
 
-	for (i = 0; i < size; i++)
-	{
-		action(array[i]);
-	}
+void print_element(int element);
+
+void square_element(int element);
+
+void array_iterator(int *array, size_t size, void (*action)(int)) {
+    for (size_t i = 0; i < size; i++) {
+        action(array[i]);
+    }
+}
+
+void print_element(int element) {
+    printf("%d ", element);
+}
+
+void square_element(int element) {
+    printf("%d ", element * element);
+}
+
+int main(void) {
+    int array[] = {1, 2, 3, 4, 5};
+    size_t size = sizeof(array) / sizeof(array[0]);
+
+    printf("Printing array elements: ");
+    array_iterator(array, size, print_element);
+    printf("\n");
+
+    printf("Printing squared array elements: ");
+    array_iterator(array, size, square_element);
+    printf("\n");
+
+    return 0;
 }
